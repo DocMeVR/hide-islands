@@ -9,7 +9,12 @@
     "email": "docme2nd@gmail.com"
   },
   "license": "MIT",
-  "keywords": ["vrchat", "avatar", "mesh", "docme"],
+  "keywords": [
+    "vrchat",
+    "avatar",
+    "mesh",
+    "docme"
+  ],
   "vpmDependencies": {
     "com.vrchat.base": ">=3.5.0"
   }
