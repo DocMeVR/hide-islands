@@ -1,0 +1,70 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          config-file: .github/release-please-config.json
+          manifest-file: .github/.release-please-manifest.json
+
+  # Runs once release-please has merged a release PR and created the release: builds the package
+  # files and attaches them, which is what the VCC listing reads.
+  build:
+    needs: release-please
+    if: ${{ needs.release-please.outputs.release_created == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.release-please.outputs.tag_name }}
+
+      - name: Read package.json
+        id: pkg
+        run: |
+          echo "name=$(jq -r .name package.json)" >> $GITHUB_OUTPUT
+          echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
+
+      - name: Create Package Zip
+        run: zip -r "${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.zip" . -x ".git/*" ".github/*" "*.zip"
+
+      - name: Track Package Meta Files
+        run: find . -path ./.git -prune -o -name \*.meta -print >> metaList
+
+      - name: Create UnityPackage
+        uses: pCYSl5EDgo/create-unitypackage@v1.2.3
+        with:
+          package-path: ${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.unitypackage
+          include-files: metaList
+
+      - name: Attach Files To Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "${{ needs.release-please.outputs.tag_name }}" "${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.zip" "${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.unitypackage" package.json --clobber
+
+      # With a token that may run workflows on DocMeVR/vpm the listing updates right away; without
+      # one its hourly schedule picks the release up.
+      - name: Rebuild The VCC Listing
+        env:
+          TOKEN: ${{ secrets.VPM_LISTING_TOKEN }}
+        run: |
+          if [ -n "$TOKEN" ]; then
+            curl -sS -X POST -H "Authorization: Bearer $TOKEN" -H "Accept: application/vnd.github+json" \
+              https://api.github.com/repos/DocMeVR/vpm/dispatches -d '{"event_type":"package-released"}'
+          else
+            echo "VPM_LISTING_TOKEN is not set: the listing rebuilds on its hourly schedule."
+          fi
