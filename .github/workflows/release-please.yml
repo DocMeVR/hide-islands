@@ -39,22 +39,40 @@ jobs:
           echo "name=$(jq -r .name package.json)" >> $GITHUB_OUTPUT
           echo "version=$(jq -r .version package.json)" >> $GITHUB_OUTPUT
 
+      # The package as VCC installs it: no tests, no design notes, no repository files. It sits under
+      # Packages/<name> so the unitypackage imports into the Packages folder.
+      - name: Stage The Package
+        run: |
+          stage="$RUNNER_TEMP/stage/Packages/${{ steps.pkg.outputs.name }}"
+          mkdir -p "$stage"
+          rsync -a --exclude '.git' --exclude '.github' --exclude '.gitignore' --exclude '.gitattributes' \
+            --exclude 'Tests' --exclude 'Tests.meta' --exclude 'Docs~' ./ "$stage/"
+
       - name: Create Package Zip
-        run: zip -r "${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.zip" . -x ".git/*" ".github/*" "*.zip"
+        run: |
+          cd "$RUNNER_TEMP/stage/Packages/${{ steps.pkg.outputs.name }}"
+          zip -r -q "$GITHUB_WORKSPACE/${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.zip" .
 
       - name: Track Package Meta Files
-        run: find . -path ./.git -prune -o -name \*.meta -print >> metaList
+        run: |
+          cd "$RUNNER_TEMP/stage"
+          find "Packages/${{ steps.pkg.outputs.name }}" -name '*.meta' > metaList
 
       - name: Create UnityPackage
         uses: pCYSl5EDgo/create-unitypackage@v1.2.3
         with:
+          working-folder: ${{ runner.temp }}/stage
           package-path: ${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.unitypackage
           include-files: metaList
 
       - name: Attach Files To Release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release upload "${{ needs.release-please.outputs.tag_name }}" "${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.zip" "${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.unitypackage" package.json --clobber
+        run: |
+          gh release upload "${{ needs.release-please.outputs.tag_name }}" \
+            "${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.zip" \
+            "$RUNNER_TEMP/stage/${{ steps.pkg.outputs.name }}-${{ steps.pkg.outputs.version }}.unitypackage" \
+            package.json --clobber
 
       # With a token that may run workflows on DocMeVR/vpm the listing updates right away; without
       # one its hourly schedule picks the release up.
