@@ -1,7 +1,7 @@
 {
   "name": "com.docme.hide-islands",
   "displayName": "DocMe Hide Mesh Islands",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "unity": "2022.3",
   "description": "Hides small parts of an avatar mesh (highlights, stickers, decorations) without editing the model: select them in the Scene view, hide them in one go, bring them back any time. Also the mesh library the DocMe Eye Installer builds on.",
   "author": {
