@@ -135,7 +135,7 @@ namespace DocMe.HideIslands
                     var restore = e.originalMesh != null ? e.originalMesh : SourceModel.Resolve(e.sourcePath, e.sourceMeshName, e.renderer.name);
                     if (restore != null) e.renderer.sharedMesh = restore;
                 }
-                if (e.modifiedMesh != null)
+                if (e.modifiedMesh != null && !DocMeReapply.IsMeshInUse(e.modifiedMesh, avatar))
                 {
                     string p = AssetDatabase.GetAssetPath(e.modifiedMesh);
                     if (!string.IsNullOrEmpty(p)) AssetDatabase.DeleteAsset(p);

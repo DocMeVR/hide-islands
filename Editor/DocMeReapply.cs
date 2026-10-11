@@ -23,6 +23,10 @@ namespace DocMe.HideIslands
         bool TryGetSource(GameObject avatar, Mesh generated, out string path, out string meshName);
         /// <summary>Rebuilds the install on the current source model and returns a short report.</summary>
         string Reapply(GameObject avatar);
+        /// <summary>True when this tool's records on the avatar point at the mesh (as a replaced or a generated mesh).</summary>
+        bool ReferencesMesh(GameObject avatar, Mesh mesh);
+        /// <summary>True when a mesh this tool put on the avatar is gone (deleted, or taken by a revert on a duplicate).</summary>
+        bool HasMissingMesh(GameObject avatar);
     }
 
     /// <summary>Runs the stored installs again on the current source model (after a reimport). Tools register
@@ -57,6 +61,26 @@ namespace DocMe.HideIslands
                 if (h.Claims(avatar)) return h.Reapply(avatar);
             return "Nothing installed.";
         }
+
+        /// <summary>True when any tool on the avatar lost a mesh it generated.</summary>
+        public static bool HasMissingMesh(GameObject avatar) => handlers.Any(h => h.Claims(avatar) && h.HasMissingMesh(avatar));
+
+        /// <summary>True when anything outside <paramref name="except"/> still uses the mesh: a renderer in a loaded
+        /// scene, or another avatar's install records. Duplicated avatars share one generated mesh asset, so a revert
+        /// must leave it alone while the other copy needs it.</summary>
+        public static bool IsMeshInUse(Mesh mesh, GameObject except)
+        {
+            if (mesh == null) return false;
+            bool Outside(Component c) => except == null || !c.transform.IsChildOf(except.transform);
+            foreach (var r in Object.FindObjectsOfType<SkinnedMeshRenderer>(true))
+                if (r.sharedMesh == mesh && Outside(r)) return true;
+            foreach (var f in Object.FindObjectsOfType<MeshFilter>(true))
+                if (f.sharedMesh == mesh && Outside(f)) return true;
+            foreach (var h in handlers)
+                foreach (var a in h.FindInstalled())
+                    if (a != except && h.ReferencesMesh(a, mesh)) return true;
+            return false;
+        }
     }
 
     class HideReapplyHandler : IReapplyHandler
@@ -88,6 +112,22 @@ namespace DocMe.HideIslands
             if (hide == null) return false;
             foreach (var e in hide.entries)
                 if (e.modifiedMesh == generated && !string.IsNullOrEmpty(e.sourcePath)) { path = e.sourcePath; meshName = e.sourceMeshName; return true; }
+            return false;
+        }
+
+        public bool ReferencesMesh(GameObject avatar, Mesh mesh)
+        {
+            var hide = avatar.GetComponent<DocMeIslandHide>();
+            if (hide == null) return false;
+            foreach (var e in hide.entries) if (e.modifiedMesh == mesh || e.originalMesh == mesh) return true;
+            return false;
+        }
+
+        public bool HasMissingMesh(GameObject avatar)
+        {
+            var hide = avatar.GetComponent<DocMeIslandHide>();
+            if (hide == null) return false;
+            foreach (var e in hide.entries) if (e.modifiedMesh == null || (e.renderer != null && e.renderer.sharedMesh == null)) return true;
             return false;
         }
 
