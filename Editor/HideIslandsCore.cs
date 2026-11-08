@@ -156,8 +156,8 @@ namespace DocMe.HideIslands
                 if (SourceModel.TryResolve(avatar, p, cache, out var seed)) seeds.Add(seed); else lost++;
             bool ok = Apply(avatar, seeds, deleteGeometry, sinkIntoHead, out int verts, out int meshes, out int skipped);
             var sb = new StringBuilder();
-            sb.AppendLine(ok ? $"Hidden parts re-applied ({verts} verts)." : "Hidden parts: nothing left to hide.");
-            if (lost + skipped > 0) sb.AppendLine($"⚠ {lost + skipped} hide {(lost + skipped == 1 ? "pick" : "picks")} no longer match the mesh and were dropped.");
+            sb.AppendLine(ok ? L.Text("reapply.hide.done", verts) : L.Text("reapply.hide.none"));
+            if (lost + skipped > 0) sb.AppendLine(L.Count(lost + skipped, "reapply.hide.dropped", lost + skipped));
             return sb.ToString().TrimEnd();
         }
     }

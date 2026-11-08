@@ -25,7 +25,7 @@ namespace DocMe.HideIslands
                                    out SkinnedMeshRenderer smr, out int vertex, out Vector3 point, out string reason)
         {
             smr = null; vertex = -1; point = default; reason = null;
-            if (root == null) { reason = "No avatar assigned."; return false; }
+            if (root == null) { reason = L.Text("pick.noAvatar"); return false; }
 
             int unreadable = 0, tested = 0;
             float best = float.MaxValue;
@@ -51,11 +51,11 @@ namespace DocMe.HideIslands
             if (smr != null) return true;
 
             if (unreadable > 0)
-                reason = $"Missed. {unreadable} mesh(es) are skipped because Read/Write is disabled: enable it on the model importer.";
+                reason = L.Count(unreadable, "pick.unreadable", unreadable);
             else if (tested == 0)
-                reason = "Missed: no skinned mesh under the ray. Is the right avatar assigned?";
+                reason = L.Text("pick.noMesh");
             else
-                reason = "Missed: click directly on the mesh surface.";
+                reason = L.Text("pick.surface");
             return false;
         }
 

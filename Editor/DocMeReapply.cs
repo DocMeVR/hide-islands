@@ -59,7 +59,7 @@ namespace DocMe.HideIslands
         {
             foreach (var h in handlers)
                 if (h.Claims(avatar)) return h.Reapply(avatar);
-            return "Nothing installed.";
+            return L.Text("reapply.nothing");
         }
 
         /// <summary>True when any tool on the avatar lost a mesh it generated.</summary>
@@ -134,13 +134,13 @@ namespace DocMe.HideIslands
         public string Reapply(GameObject avatar)
         {
             var hide = avatar.GetComponent<DocMeIslandHide>();
-            if (hide == null) return "Nothing hidden.";
+            if (hide == null) return L.Text("reapply.hide.nothing");
             if (hide.appliedAt == 0)
-                return "⚠ Hidden with an older version that didn't record its picks. Show all and hide the parts once more; after that it re-applies by itself.";
+                return L.Text("reapply.hide.old");
             var picks = new List<DocMePick>(hide.picks);
             bool delete = hide.deleteGeometry, sink = hide.sinkIntoHead;
             HideIslandsCore.Revert(avatar);
-            return picks.Count == 0 ? "Nothing hidden." : HideIslandsCore.Reapply(avatar, picks, delete, sink);
+            return picks.Count == 0 ? L.Text("reapply.hide.nothing") : HideIslandsCore.Reapply(avatar, picks, delete, sink);
         }
     }
 

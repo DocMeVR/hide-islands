@@ -1,0 +1,197 @@
+msgid ""
+msgstr ""
+"Language: ja-JP\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"X-DocMe-Reviewed: no\n"
+
+#. en: Hide Mesh Islands
+msgid "window.title"
+msgstr "メッシュの一部を非表示"
+
+#. en: Hiding {0} parts…
+msgid "hide.busy.hiding"
+msgstr "{0} 箇所を隠しています…"
+
+#. en: Hiding 1 part…
+msgid "hide.busy.hiding.one"
+msgstr "1 箇所を隠しています…"
+
+#. en: {0} of the selected parts could not be hidden.
+msgid "hide.notHidden"
+msgstr "選択した {0} 箇所は隠せませんでした。"
+
+#. en: Updating…
+msgid "hide.busy.updating"
+msgstr "更新中…"
+
+#. en: Hide any small part of a mesh: a highlight, a sticker, a decoration. Select the parts in the Scene view, then hide them all at once. Nothing is lost; Show all brings everything back.
+msgid "window.about"
+msgstr "メッシュの小さな部分（ハイライト、シール、飾りなど）を隠します。シーンで部分を選んでから、まとめて隠します。消えたものは「全て表示」で戻せます。"
+
+#. en: Avatar
+msgid "avatar.field"
+msgstr "アバター"
+
+#. en: Use selected: {0}
+msgid "avatar.useSelected"
+msgstr "選択中の「{0}」を使う"
+
+#. en: Selecting… press to stop
+msgid "hide.selecting"
+msgstr "選択中… 押すと終了"
+
+#. en: Select parts to hide
+msgid "hide.select"
+msgstr "隠す部分を選択"
+
+#. en: Click parts in the Scene view to select them; click a selected part again to unselect it.
+msgid "hide.select.tip"
+msgstr "シーンで部分をクリックして選びます。選んだ部分をもう一度クリックすると外れます。"
+
+#. en: Hide selected parts
+msgid "hide.button.none"
+msgstr "選択した部分を隠す"
+
+#. en: Hide {0} selected parts
+msgid "hide.button"
+msgstr "選択した {0} 箇所を隠す"
+
+#. en: Hide 1 selected part
+msgid "hide.button.one"
+msgstr "選択した 1 箇所を隠す"
+
+#. en: Hides all selected parts in one go. Enter in the Scene view does the same.
+msgid "hide.button.tip"
+msgstr "選択した部分をまとめて隠します。シーンで Enter を押しても同じです。"
+
+#. en: Undo last
+msgid "hide.undo"
+msgstr "最後を取り消す"
+
+#. en: Takes back the last selected part, or the last hidden part when nothing is selected.
+msgid "hide.undo.tip"
+msgstr "最後に選んだ部分を外します。何も選んでいなければ最後に隠した部分を戻します。"
+
+#. en: Show all
+msgid "hide.showAll"
+msgstr "全て表示"
+
+#. en: Brings every hidden part back.
+msgid "hide.showAll.tip"
+msgstr "隠した部分をすべて戻します。"
+
+#. en: Showing all…
+msgid "hide.busy.showAll"
+msgstr "すべて表示中…"
+
+#. en: Click parts in the Scene view. Enter hides the selection, Esc stops, Ctrl+Z takes back the last one.
+msgid "hide.pickHelp"
+msgstr "シーンで部分をクリックしてください。Enter で選択を隠す、Esc で終了、Ctrl+Z で最後を取り消し。"
+
+#. en: {0} parts selected. Press Hide.
+msgid "hide.selected"
+msgstr "{0} 箇所を選択中。「隠す」を押してください。"
+
+#. en: 1 part selected. Press Hide.
+msgid "hide.selected.one"
+msgstr "1 箇所を選択中。「隠す」を押してください。"
+
+#. en: {0} parts hidden.
+msgid "hide.hidden"
+msgstr "{0} 箇所を隠しました。"
+
+#. en: 1 part hidden.
+msgid "hide.hidden.one"
+msgstr "1 箇所を隠しました。"
+
+#. en: Advanced
+msgid "advanced"
+msgstr "詳細設定"
+
+#. en: Delete hidden parts instead of folding them
+msgid "hide.delete"
+msgstr "隠す部分を畳まずに削除"
+
+#. en: Folding uses a blendshape. Deleting removes the triangles, which stops other blendshapes from pulling them back into view.
+msgid "hide.delete.tip"
+msgstr "畳む方法はブレンドシェイプです。削除はポリゴンを消すので、他のブレンドシェイプで再表示されなくなります。"
+
+#. en: Fold hidden parts into the head
+msgid "hide.fold"
+msgstr "隠す部分を頭の中に畳み込む"
+
+#. en: Rebuild automatically when the model is reimported
+msgid "hide.autoRebuild"
+msgstr "モデルの再インポート時に自動で作り直す"
+
+#. en: Edit the FBX in Blender and reimport: the eyes and hidden parts come back on the new mesh.
+msgid "hide.autoRebuild.tip"
+msgstr "Blender で FBX を編集して再インポートすると、目と隠した部分が新しいメッシュに戻ります。"
+
+#. en: Click parts to select them ({0} selected, {1} hidden). Enter hides them, Esc stops, Ctrl+Z takes back the last.
+msgid "hide.overlay"
+msgstr "隠す部分をクリックして選択（{0} 選択、{1} 非表示）。Enter で隠す、Esc で終了、Ctrl+Z で最後を取り消し。"
+
+#. en: Another DocMe tool uses that part, so it stays.
+msgid "hide.protected"
+msgstr "その部分は別の DocMe ツールが使っているので隠しません。"
+
+#. en: That part is too big to hide. Click a small piece such as a highlight.
+msgid "hide.tooBig"
+msgstr "その部分は大きすぎて隠せません。ハイライトなど小さな部分をクリックしてください。"
+
+#. en: That mesh cannot be read.
+msgid "hide.unreadable"
+msgstr "そのメッシュは読み取れません。"
+
+#. en: No avatar assigned.
+msgid "pick.noAvatar"
+msgstr "アバターが入っていません。"
+
+#. en: Missed. {0} meshes have Read/Write off in their model's import settings, so clicks pass through them.
+msgid "pick.unreadable"
+msgstr "外れました。{0} 個のメッシュはモデルのインポート設定で Read/Write がオフなので、クリックが届きません。"
+
+#. en: Missed. One mesh has Read/Write off in its model's import settings, so clicks pass through it.
+msgid "pick.unreadable.one"
+msgstr "外れました。1 個のメッシュはモデルのインポート設定で Read/Write がオフなので、クリックが届きません。"
+
+#. en: Missed. No mesh of this avatar is under the mouse. Is the right avatar assigned?
+msgid "pick.noMesh"
+msgstr "外れました。マウスの下にこのアバターのメッシュがありません。正しいアバターが入っていますか？"
+
+#. en: Missed. Click right on the mesh.
+msgid "pick.surface"
+msgstr "外れました。メッシュの上を直接クリックしてください。"
+
+#. en: Hidden parts re-applied ({0} vertices).
+msgid "reapply.hide.done"
+msgstr "隠した部分を作り直しました（頂点 {0} 個）。"
+
+#. en: Nothing left to hide.
+msgid "reapply.hide.none"
+msgstr "隠す部分が残っていません。"
+
+#. en: ⚠ {0} hidden parts no longer match the mesh and were dropped.
+msgid "reapply.hide.dropped"
+msgstr "⚠ 隠した部分のうち {0} 箇所がメッシュと合わなくなったため外しました。"
+
+#. en: ⚠ 1 hidden part no longer matches the mesh and was dropped.
+msgid "reapply.hide.dropped.one"
+msgstr "⚠ 隠した部分のうち 1 箇所がメッシュと合わなくなったため外しました。"
+
+#. en: Nothing installed.
+msgid "reapply.nothing"
+msgstr "何も入っていません。"
+
+#. en: Nothing hidden.
+msgid "reapply.hide.nothing"
+msgstr "隠した部分はありません。"
+
+#. en: ⚠ Hidden with an older version that didn't save its picks. Press Show all and hide the parts once more, then they re-apply by themselves.
+msgid "reapply.hide.old"
+msgstr "⚠ 選んだ部分を保存しない古いバージョンで隠しています。「全て表示」を押してからもう一度隠すと、次から自動で作り直せます。"
+
+#. en: Language of this window. With NDMF tools installed it's the same setting they use.
+msgid "language.tip"
+msgstr "このウィンドウの言語です。NDMFのツールが入っていれば、それと同じ設定を使います。"

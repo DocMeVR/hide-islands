@@ -19,6 +19,10 @@ The avatar remembers what was hidden. If the model file is reimported (after an 
 
 Generated meshes are written to `Assets/DocMe Generated/Meshes`.
 
+## Language
+
+The window shows English or Japanese. It follows your PC's language until you pick one at the top of the window. With an NDMF tool installed (Modular Avatar, AvatarDoc) it shares that tool's language setting.
+
 ## For tool authors
 
 The package also carries the mesh library the DocMe Eye Installer is built on: island flood fill, scene picking, pick storage that survives a reimport, and the reimport watcher. A tool that builds on top of a hidden mesh registers an `IReapplyHandler` and, if it owns vertices a click must not hide, adds a function to `HideIslandsCore.ProtectedVertices`.

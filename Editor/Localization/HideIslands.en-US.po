@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Language: en-US\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid "window.title"
+msgstr "Hide Mesh Islands"
+
+msgid "hide.busy.hiding"
+msgstr "Hiding {0} parts…"
+
+msgid "hide.busy.hiding.one"
+msgstr "Hiding 1 part…"
+
+msgid "hide.notHidden"
+msgstr "{0} of the selected parts could not be hidden."
+
+msgid "hide.busy.updating"
+msgstr "Updating…"
+
+msgid "window.about"
+msgstr "Hide any small part of a mesh: a highlight, a sticker, a decoration. Select the parts in the Scene view, then hide them all at once. Nothing is lost; Show all brings everything back."
+
+msgid "avatar.field"
+msgstr "Avatar"
+
+msgid "avatar.useSelected"
+msgstr "Use selected: {0}"
+
+msgid "hide.selecting"
+msgstr "Selecting… press to stop"
+
+msgid "hide.select"
+msgstr "Select parts to hide"
+
+msgid "hide.select.tip"
+msgstr "Click parts in the Scene view to select them; click a selected part again to unselect it."
+
+msgid "hide.button.none"
+msgstr "Hide selected parts"
+
+msgid "hide.button"
+msgstr "Hide {0} selected parts"
+
+msgid "hide.button.one"
+msgstr "Hide 1 selected part"
+
+msgid "hide.button.tip"
+msgstr "Hides all selected parts in one go. Enter in the Scene view does the same."
+
+msgid "hide.undo"
+msgstr "Undo last"
+
+msgid "hide.undo.tip"
+msgstr "Takes back the last selected part, or the last hidden part when nothing is selected."
+
+msgid "hide.showAll"
+msgstr "Show all"
+
+msgid "hide.showAll.tip"
+msgstr "Brings every hidden part back."
+
+msgid "hide.busy.showAll"
+msgstr "Showing all…"
+
+msgid "hide.pickHelp"
+msgstr "Click parts in the Scene view. Enter hides the selection, Esc stops, Ctrl+Z takes back the last one."
+
+msgid "hide.selected"
+msgstr "{0} parts selected. Press Hide."
+
+msgid "hide.selected.one"
+msgstr "1 part selected. Press Hide."
+
+msgid "hide.hidden"
+msgstr "{0} parts hidden."
+
+msgid "hide.hidden.one"
+msgstr "1 part hidden."
+
+msgid "advanced"
+msgstr "Advanced"
+
+msgid "hide.delete"
+msgstr "Delete hidden parts instead of folding them"
+
+msgid "hide.delete.tip"
+msgstr "Folding uses a blendshape. Deleting removes the triangles, which stops other blendshapes from pulling them back into view."
+
+msgid "hide.fold"
+msgstr "Fold hidden parts into the head"
+
+msgid "hide.autoRebuild"
+msgstr "Rebuild automatically when the model is reimported"
+
+msgid "hide.autoRebuild.tip"
+msgstr "Edit the FBX in Blender and reimport: the eyes and hidden parts come back on the new mesh."
+
+msgid "hide.overlay"
+msgstr "Click parts to select them ({0} selected, {1} hidden). Enter hides them, Esc stops, Ctrl+Z takes back the last."
+
+msgid "hide.protected"
+msgstr "Another DocMe tool uses that part, so it stays."
+
+msgid "hide.tooBig"
+msgstr "That part is too big to hide. Click a small piece such as a highlight."
+
+msgid "hide.unreadable"
+msgstr "That mesh cannot be read."
+
+msgid "pick.noAvatar"
+msgstr "No avatar assigned."
+
+msgid "pick.unreadable"
+msgstr "Missed. {0} meshes have Read/Write off in their model's import settings, so clicks pass through them."
+
+msgid "pick.unreadable.one"
+msgstr "Missed. One mesh has Read/Write off in its model's import settings, so clicks pass through it."
+
+msgid "pick.noMesh"
+msgstr "Missed. No mesh of this avatar is under the mouse. Is the right avatar assigned?"
+
+msgid "pick.surface"
+msgstr "Missed. Click right on the mesh."
+
+msgid "reapply.hide.done"
+msgstr "Hidden parts re-applied ({0} vertices)."
+
+msgid "reapply.hide.none"
+msgstr "Nothing left to hide."
+
+msgid "reapply.hide.dropped"
+msgstr "⚠ {0} hidden parts no longer match the mesh and were dropped."
+
+msgid "reapply.hide.dropped.one"
+msgstr "⚠ 1 hidden part no longer matches the mesh and was dropped."
+
+msgid "reapply.nothing"
+msgstr "Nothing installed."
+
+msgid "reapply.hide.nothing"
+msgstr "Nothing hidden."
+
+msgid "reapply.hide.old"
+msgstr "⚠ Hidden with an older version that didn't save its picks. Press Show all and hide the parts once more, then they re-apply by themselves."
+
+msgid "language.tip"
+msgstr "Language of this window. With NDMF tools installed it's the same setting they use."
