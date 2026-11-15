@@ -27,10 +27,6 @@ The window shows English or Japanese. It follows your PC's language until you pi
 
 The package also carries the mesh library the DocMe Eye Installer is built on: island flood fill, scene picking, pick storage that survives a reimport, and the reimport watcher. A tool that builds on top of a hidden mesh registers an `IReapplyHandler` and, if it owns vertices a click must not hide, adds a function to `HideIslandsCore.ProtectedVertices`.
 
-## How this was made
-
-The code in this repository was written by AI (Claude, by Anthropic). The idea, the design, every feature, the testing on real avatars and the decisions on how it should behave are mine (DocMe). I planned it and directed the work; the AI typed it out. Bug reports and pull requests are welcome, and anything that gets merged goes through my own review.
-
 ## License
 
 MIT. See `LICENSE.md`.
