@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.0](https://github.com/DocMeVR/hide-islands/compare/1.1.0...1.2.0) (2026-11-15)
+
+
+### Features
+
+* **cleanup:** find and delete generated meshes nothing uses ([685236b](https://github.com/DocMeVR/hide-islands/commit/685236b5676fc8bccaa1cee14921afdc62e66ddb))
+* **ui:** tooltips for the avatar field and the fold option ([685236b](https://github.com/DocMeVR/hide-islands/commit/685236b5676fc8bccaa1cee14921afdc62e66ddb))
+
 ## [1.1.0](https://github.com/DocMeVR/hide-islands/compare/1.0.1...1.1.0) (2026-11-08)
 
 
