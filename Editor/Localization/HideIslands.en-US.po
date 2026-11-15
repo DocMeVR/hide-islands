@@ -24,6 +24,9 @@ msgstr "Hide any small part of a mesh: a highlight, a sticker, a decoration. Sel
 msgid "avatar.field"
 msgstr "Avatar"
 
+msgid "avatar.field.tip"
+msgstr "The avatar's top object, the one with the Animator and the VRC Avatar Descriptor."
+
 msgid "avatar.useSelected"
 msgstr "Use selected: {0}"
 
@@ -90,6 +93,9 @@ msgstr "Folding uses a blendshape. Deleting removes the triangles, which stops o
 msgid "hide.fold"
 msgstr "Fold hidden parts into the head"
 
+msgid "hide.fold.tip"
+msgstr "Shrinks every hidden part to a point inside the head. Off shrinks each part just behind where it was."
+
 msgid "hide.autoRebuild"
 msgstr "Rebuild automatically when the model is reimported"
 
@@ -143,6 +149,36 @@ msgstr "Nothing hidden."
 
 msgid "reapply.hide.old"
 msgstr "⚠ Hidden with an older version that didn't save its picks. Press Show all and hide the parts once more, then they re-apply by themselves."
+
+msgid "cleanup.title"
+msgstr "Delete Unused Generated Meshes"
+
+msgid "cleanup.searching"
+msgstr "Looking for mesh files nothing uses…"
+
+msgid "cleanup.none"
+msgstr "Every generated mesh is still in use. Nothing to delete."
+
+msgid "cleanup.ok"
+msgstr "OK"
+
+msgid "cleanup.ask"
+msgstr "{0} generated mesh files ({1}) are not used by any scene, prefab or animation. Delete them? This can't be undone."
+
+msgid "cleanup.ask.one"
+msgstr "1 generated mesh file ({1}) is not used by any scene, prefab or animation. Delete it? This can't be undone."
+
+msgid "cleanup.delete"
+msgstr "Delete"
+
+msgid "cleanup.keep"
+msgstr "Keep"
+
+msgid "cleanup.done"
+msgstr "Deleted {0} unused mesh files ({1})."
+
+msgid "cleanup.done.one"
+msgstr "Deleted 1 unused mesh file ({1})."
 
 msgid "language.tip"
 msgstr "Language of this window. With NDMF tools installed it's the same setting they use."

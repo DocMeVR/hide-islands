@@ -34,6 +34,10 @@ namespace DocMe.HideIslands.Tests
         }
 
         [Test]
+        public void EveryLabelHasATooltip()
+            => KeyUse.AssertEveryLabelHasTip(KeyUse.Scan(KeyUse.EditorFolder(L.Table), "L", "GC"), KeyUse.Load(L.Table));
+
+        [Test]
         public void CountPicksTheSingularForOne()
         {
             var saved = DocMeLanguage.StoreOverride;
@@ -58,6 +62,8 @@ namespace DocMe.HideIslands.Tests
         public readonly HashSet<string> Plain = new HashSet<string>();
         public readonly HashSet<string> Counted = new HashSet<string>();
         public readonly HashSet<string> Labels = new HashSet<string>();
+        /// <summary>Labels drawn without an explicit tooltip key: their tooltip is the label key plus ".tip".</summary>
+        public readonly HashSet<string> OwnTipLabels = new HashSet<string>();
 
         static readonly Regex KeyLike = new Regex(@"^[a-z][A-Za-z]*(\.[A-Za-z]+)*$");
         static readonly Regex Literal = new Regex("\"((?:[^\"\\\\]|\\\\.)*)\"");
@@ -83,7 +89,7 @@ namespace DocMe.HideIslands.Tests
                     }
                     else
                     {
-                        if (args.Count > 0) foreach (var key in Keys(args[0])) use.Labels.Add(key);
+                        if (args.Count > 0) foreach (var key in Keys(args[0])) { use.Labels.Add(key); if (args.Count == 1) use.OwnTipLabels.Add(key); }
                         if (args.Count > 1) foreach (var key in Keys(args[1])) use.Plain.Add(key);
                     }
                 }
@@ -147,6 +153,16 @@ namespace DocMe.HideIslands.Tests
                 foreach (var key in use.Required())
                     if (pair.Value.Text(key) == null) missing.Add(pair.Key + ": " + key);
             CollectionAssert.IsEmpty(missing, "keys the code uses but a language file lacks");
+        }
+
+        /// <summary>Every labelled control gets a one sentence tooltip, in every language.</summary>
+        public static void AssertEveryLabelHasTip(KeyUse use, Dictionary<string, PoFile> files)
+        {
+            var missing = new List<string>();
+            foreach (var pair in files)
+                foreach (var key in use.OwnTipLabels)
+                    if (pair.Value.Text(key + ".tip") == null) missing.Add(pair.Key + ": " + key + ".tip");
+            CollectionAssert.IsEmpty(missing, "labels without a tooltip");
         }
 
         public static void AssertUpToDate(Dictionary<string, PoFile> files)

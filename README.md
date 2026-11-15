@@ -19,6 +19,10 @@ The avatar remembers what was hidden. If the model file is reimported (after an 
 
 Generated meshes are written to `Assets/DocMe Generated/Meshes`.
 
+### Cleaning up
+
+A face copy with many blendshapes can be hundreds of MB. Undoing a hide with Ctrl+Z, or deleting an avatar copy, leaves its mesh file behind. **Tools > DocMe > Delete Unused Generated Meshes** finds the files no scene, prefab or animation in the project uses any more, says how much space they take, and asks before deleting them. It only looks in the folders the DocMe eye and hide tools write to.
+
 ## Language
 
 The window shows English or Japanese. It follows your PC's language until you pick one at the top of the window. With an NDMF tool installed (Modular Avatar, AvatarDoc) it shares that tool's language setting.

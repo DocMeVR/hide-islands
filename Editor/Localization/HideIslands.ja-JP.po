@@ -32,6 +32,10 @@ msgstr "メッシュの小さな部分（ハイライト、シール、飾りな
 msgid "avatar.field"
 msgstr "アバター"
 
+#. en: The avatar's top object, the one with the Animator and the VRC Avatar Descriptor.
+msgid "avatar.field.tip"
+msgstr "アバターの一番上のオブジェクト（Animator と VRC Avatar Descriptor が付いているもの）。"
+
 #. en: Use selected: {0}
 msgid "avatar.useSelected"
 msgstr "選択中の「{0}」を使う"
@@ -120,6 +124,10 @@ msgstr "畳む方法はブレンドシェイプです。削除はポリゴンを
 msgid "hide.fold"
 msgstr "隠す部分を頭の中に畳み込む"
 
+#. en: Shrinks every hidden part to a point inside the head. Off shrinks each part just behind where it was.
+msgid "hide.fold.tip"
+msgstr "隠した部分を頭の中の一点に縮めます。オフにすると、それぞれ元の位置のすぐ後ろに縮みます。"
+
 #. en: Rebuild automatically when the model is reimported
 msgid "hide.autoRebuild"
 msgstr "モデルの再インポート時に自動で作り直す"
@@ -191,6 +199,46 @@ msgstr "隠した部分はありません。"
 #. en: ⚠ Hidden with an older version that didn't save its picks. Press Show all and hide the parts once more, then they re-apply by themselves.
 msgid "reapply.hide.old"
 msgstr "⚠ 選んだ部分を保存しない古いバージョンで隠しています。「全て表示」を押してからもう一度隠すと、次から自動で作り直せます。"
+
+#. en: Delete Unused Generated Meshes
+msgid "cleanup.title"
+msgstr "使われていない生成メッシュの削除"
+
+#. en: Looking for mesh files nothing uses…
+msgid "cleanup.searching"
+msgstr "使われていないメッシュファイルを探しています…"
+
+#. en: Every generated mesh is still in use. Nothing to delete.
+msgid "cleanup.none"
+msgstr "生成メッシュはすべて使用中です。削除するものはありません。"
+
+#. en: OK
+msgid "cleanup.ok"
+msgstr "OK"
+
+#. en: {0} generated mesh files ({1}) are not used by any scene, prefab or animation. Delete them? This can't be undone.
+msgid "cleanup.ask"
+msgstr "{0} 個の生成メッシュファイル（{1}）が、どのシーン・プレハブ・アニメーションからも使われていません。削除しますか？元に戻すことはできません。"
+
+#. en: 1 generated mesh file ({1}) is not used by any scene, prefab or animation. Delete it? This can't be undone.
+msgid "cleanup.ask.one"
+msgstr "1 個の生成メッシュファイル（{1}）が、どのシーン・プレハブ・アニメーションからも使われていません。削除しますか？元に戻せません。"
+
+#. en: Delete
+msgid "cleanup.delete"
+msgstr "削除"
+
+#. en: Keep
+msgid "cleanup.keep"
+msgstr "残す"
+
+#. en: Deleted {0} unused mesh files ({1}).
+msgid "cleanup.done"
+msgstr "使われていないメッシュファイルを {0} 個削除しました（{1}）。"
+
+#. en: Deleted 1 unused mesh file ({1}).
+msgid "cleanup.done.one"
+msgstr "使われていないメッシュファイルを 1 個削除しました（{1}）。"
 
 #. en: Language of this window. With NDMF tools installed it's the same setting they use.
 msgid "language.tip"
